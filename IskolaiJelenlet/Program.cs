@@ -1,4 +1,5 @@
-﻿using Controllers;
+﻿using System.Security.Cryptography.X509Certificates;
+using Controllers;
 
 namespace IskolaiJelenlet
 {
@@ -9,6 +10,7 @@ namespace IskolaiJelenlet
 
             var menu = 0;
             var Controllerek = new Feladatok();
+            
             
             do
             {
