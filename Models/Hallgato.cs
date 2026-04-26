@@ -27,7 +27,11 @@ namespace Models
         public String getFirstName() { return _firstName; }
         public String getLastName() { return _lastName; }
         public String getEmail() { return _email; }
-                
+
+        public override string ToString()
+        {
+            return String.Format("{0,-10:d}{1,-15:s}{2,-15:s}{3,25:s}", _id,_firstName,_lastName,_email);
+        }
 
 
 

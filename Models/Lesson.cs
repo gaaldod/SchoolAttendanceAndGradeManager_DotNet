@@ -8,18 +8,39 @@ namespace Models
 {
     public class Lesson
     {
-        protected int _id;
+        
         protected int _courseId;
         protected String _title;
         protected DateTime _lessonDate;
-        public Lesson(String[] adatok)
+        public Lesson(int id,string title,DateTime startTime)
         {
-            _id = Int32.Parse(adatok[0]);
-            _courseId = Int32.Parse(adatok[1]);
-            _title = adatok[2];
-            //ezt még ki kell javítani
-            _lessonDate = new DateTime();
+
+            _courseId = id;
+            _title = title;
+            _lessonDate = startTime;
         }
-        public int getId() { return _id; }
+        public int getCourseId() { return _courseId; }
+        public String getTitle() { return _title; }
+        
+        public DateTime GetDate() { return _lessonDate; }
+
+        public string[] ConvertToRekord()
+        {
+            string[] tmb = new string[3];
+            tmb[0] = Convert.ToString(_courseId);
+            tmb[1] = _title;
+            tmb[2] = _lessonDate.ToString("yyyy-MM-dd HH:mm:ss"); ;
+
+
+            return tmb;
+        
+        }
+        public override string ToString()
+        {
+            string kezdesFormatted = _lessonDate.ToString("yyyy-MM-dd HH:mm:ss");
+            return String.Format("{0,-8:d}{1,-15:s}{2}",_courseId,_title,kezdesFormatted);
+        }
+
+
     }
 }
