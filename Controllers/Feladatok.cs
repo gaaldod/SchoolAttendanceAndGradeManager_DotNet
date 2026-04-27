@@ -6,7 +6,8 @@ namespace Controllers
     public class Feladatok
 
     {
-        public void OraInditas()
+       
+        public Lesson OraInditas()
         {
             
             Console.WriteLine("Tanóra indítás:");
@@ -32,21 +33,21 @@ namespace Controllers
             string kezdesFormatted = kezdes.ToString("yyyy-MM-dd HH:mm:ss");
 
             var Tanora = new Lesson(oraKod,oraCim,kezdes);
+            
+            return Tanora;
 
-
-
-        }
-        public void OraBefejezes()
-        {
-            Console.WriteLine("Tanóra befejezése:");
         }
         public void OraRiportGeneralas()
         {
             Console.WriteLine("Tanóra riport generálása:");
         }
-        public void JelenletKezeles()
+        public void JelenletKezeles(Tanar tanar)
         {
+            
             Console.WriteLine("Jelenlét nyilvantartó:");
+
+
+
         }
         public void JegyKezeles()
         {
@@ -56,7 +57,24 @@ namespace Controllers
         {
             Console.WriteLine("Diákok kezelése:");
         }
+        public void OrakListaFeltoltes()
+        {
+
+        }
+
+        public void HianyzasSzamitas()
+        {
+
+        }
+
 
 
     }
+
+
+    enum Hianyzas { 
+        Present,Absent,Late
+    }
+
+
 }

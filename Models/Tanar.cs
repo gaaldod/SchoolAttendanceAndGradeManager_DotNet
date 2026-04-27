@@ -9,18 +9,19 @@ namespace Models
     public class Tanar
     {
         
-        protected Lesson _lesson;
+        
         protected List<Hallgato> _diakok;
 
-        public Tanar(Lesson lsn, List<Hallgato> diakok) 
+        public Tanar(List<Hallgato> diakok) 
         { 
-            _lesson = lsn;
+            
             _diakok = diakok;
 
         }
 
         public void KiirHallgatokListaja()
         {
+            Console.WriteLine("Diákok:");
             foreach (var item in _diakok)
             {
                 Console.WriteLine(item.ToString());

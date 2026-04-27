@@ -14,6 +14,7 @@ namespace Models
         protected String _firstName;
         protected String _lastName;
         protected String _email;
+        protected List<Jegy> jegyek;
         
         public Hallgato(String[] adatok) 
         {
@@ -27,6 +28,18 @@ namespace Models
         public String getFirstName() { return _firstName; }
         public String getLastName() { return _lastName; }
         public String getEmail() { return _email; }
+
+        public void AddJegy(string targy, int jegy)
+        {
+            jegyek.Add(new Jegy(targy,jegy));
+        }
+        public void KiirJegyek()
+        {
+            foreach (Jegy jegy in jegyek)
+            {
+                Console.WriteLine(jegy.ToString());
+            }
+        }
 
         public override string ToString()
         {
