@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Net.WebSockets;
+using System.Security.Cryptography.X509Certificates;
 using Controllers;
 using Models;
 
@@ -20,6 +21,10 @@ namespace IskolaiJelenlet
             menuPontok.Add("Diákok kezelése");
             menuPontok.Add("Jegy kezelő");
             menuPontok.Add("Jelenlét kezelő");
+            menuPontok.Add("Jegyzet hozzáadása");
+
+
+
              String[] test = {"12","Kiss","Bela","asd@faszom.org"};
              String[] test2 = {"1343","Nagy","Bsdfsdela","asdfsdfsd@faszom.org"};
              String[] test3 = {"125","Kiss","Belsdfa","asd@sdffaszom.org"};
@@ -30,6 +35,10 @@ namespace IskolaiJelenlet
             hallgatok.Add(testHallgato);
             hallgatok.Add(testHallgato2);
             hallgatok.Add(testHallgato3);
+
+
+
+
             tanar = new Tanar(hallgatok);
             /*
             var testLesson = new Lesson(1,"asdasd",DateTime.Now);
@@ -47,29 +56,43 @@ namespace IskolaiJelenlet
                 Console.Write("Kérem válasszon menüpontot: ");
                 var scanner = Console.ReadLine();
                 menu = Convert.ToInt32(scanner);
-                
+                switch (menu)
+                {
+                    case 0:
+                        Console.Clear();
+                        Console.WriteLine("Viszont látásra!");
+                        System.Threading.Thread.Sleep(3000);
+                        break;
+                    case 1:
+                        Orak.Add(Controllerek.OraInditas());
+                        Console.WriteLine("Óra rögzítve!");
+                        System.Threading.Thread.Sleep(3000);
+                        break;
+                    case 2:
+                        Controllerek.DiakokKezelese();
+                        break;
+                    case 3:
+                        Controllerek.JegyKezeles();
+                        break;
+                    case 4:
+                        Controllerek.JelenletKezeles(tanar);
+
+                        break;
+                    case 5:
+                        var Jegyzet = Controllerek.JegyzetHozzaadas();
+                        Console.Clear();
+                        Console.WriteLine("Jegyzet mentve!");
+                        System.Threading.Thread.Sleep(3000);
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("Nincs ilyen menüpont, próbálja újra!");
+                        System.Threading.Thread.Sleep(3000);
+                        break;
+                }
                 Console.Clear();
-            } while ((menu < 0) || (menu > menuPontok.Count));
-            switch (menu)
-            {
-                case 1:
-                    Orak.Add(Controllerek.OraInditas());
-                    break;
-                case 2:
-                    Controllerek.DiakokKezelese();
-                    break;
-                case 3:
-                    Controllerek.JegyKezeles();
-                    break;
-                case 4:
-                    Controllerek.JelenletKezeles(tanar);
-                    
-                    break;
-                default:
-                    Console.Clear();
-                    Console.WriteLine("Viszont látásra!");
-                    break;
-            }
+            } while (menu !=0);
+            
 
 
             

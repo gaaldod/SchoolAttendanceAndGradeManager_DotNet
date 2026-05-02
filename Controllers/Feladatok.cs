@@ -67,6 +67,19 @@ namespace Controllers
 
         }
 
+        public Note JegyzetHozzaadas()
+        {
+            Console.Clear();   
+            Console.WriteLine("Jegyzet írása:");
+            Console.Write("Adja meg a diákk nevét: ");
+            var diakneve = Console.ReadLine();
+            Console.Write("Adja meg az óra nevét: ");
+            var Oranev = Console.ReadLine();
+            Console.Write("Adja meg a jegyzetet ");
+            var jegyezet = Console.ReadLine();
+            return new Note(diakneve,Oranev,jegyezet);
+        }
+
 
 
     }

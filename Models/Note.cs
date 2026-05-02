@@ -8,19 +8,27 @@ namespace Models
 {
     public class Note
     {
-        protected int _studentId;
-        protected int _lessonId;
+        protected String _student;
+        protected String _lesson;
         protected String _content;
         protected DateTime _createdTime;
 
-        public Note(int studentid, int lessonod, String content)
+        public Note(String studentName, String lesson, String content)
         {
-            _studentId = studentid;
-            _lessonId = lessonod;
+            _student = studentName;
+            _lesson = lesson;
             _content = content;
             _createdTime = DateTime.Now ;
         }
+        public string getStudent() { return _student; }
+        public string getContent() { return _content; }
+        public string getLesson() { return _lesson; }
 
+        public DateTime getCreatedTime() { return _createdTime; }
+        public override string ToString()
+        {
+            return _student+" "+_lesson+" "+_content+" "+_createdTime;
+        }
 
 
 
