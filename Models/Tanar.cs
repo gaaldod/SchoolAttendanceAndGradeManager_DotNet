@@ -11,6 +11,7 @@ namespace Models
         
         
         protected List<Hallgato> _diakok;
+        protected Lesson _tanora;
 
         public Tanar(List<Hallgato> diakok) 
         { 
@@ -26,6 +27,11 @@ namespace Models
             {
                 Console.WriteLine(item.ToString());
             }
+        }
+        public Lesson GetLesson() { return _tanora; }
+        public void AddOra(Lesson ls)
+        {
+            _tanora = ls;
         }
 
 

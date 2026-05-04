@@ -3,29 +3,29 @@
   "WorkspaceRootPath": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\IskolaiJelenlet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{744D4179-36D0-4452-A7A3-A168A0EFAFA0}|..\\Models\\Models.csproj|c:\\users\\hgpro\\onedrive\\dokumentumok\\github\\schoolattendanceandgrademanager_dotnet\\models\\tanar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C6A2F223-5525-4A18-86E0-3E2247A3E228}|IskolaiJelenlet.csproj|c:\\users\\hgpro\\onedrive\\dokumentumok\\github\\schoolattendanceandgrademanager_dotnet\\iskolaijelenlet\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C6A2F223-5525-4A18-86E0-3E2247A3E228}|IskolaiJelenlet.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{744D4179-36D0-4452-A7A3-A168A0EFAFA0}|..\\Models\\Models.csproj|c:\\users\\hgpro\\onedrive\\dokumentumok\\github\\schoolattendanceandgrademanager_dotnet\\models\\note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55C72AE7-25DA-479B-B29C-6A840BC2D947}|..\\Controllers\\Controllers.csproj|c:\\users\\hgpro\\onedrive\\dokumentumok\\github\\schoolattendanceandgrademanager_dotnet\\controllers\\feladatok.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{744D4179-36D0-4452-A7A3-A168A0EFAFA0}|..\\Models\\Models.csproj|c:\\users\\hgpro\\onedrive\\dokumentumok\\github\\schoolattendanceandgrademanager_dotnet\\models\\jegy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{744D4179-36D0-4452-A7A3-A168A0EFAFA0}|..\\Models\\Models.csproj|c:\\users\\hgpro\\onedrive\\dokumentumok\\github\\schoolattendanceandgrademanager_dotnet\\models\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{744D4179-36D0-4452-A7A3-A168A0EFAFA0}|..\\Models\\Models.csproj|c:\\users\\hgpro\\onedrive\\dokumentumok\\github\\schoolattendanceandgrademanager_dotnet\\models\\hallgato.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{744D4179-36D0-4452-A7A3-A168A0EFAFA0}|..\\Models\\Models.csproj|c:\\users\\hgpro\\onedrive\\dokumentumok\\github\\schoolattendanceandgrademanager_dotnet\\models\\tanar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{744D4179-36D0-4452-A7A3-A168A0EFAFA0}|..\\Models\\Models.csproj|c:\\users\\hgpro\\onedrive\\dokumentumok\\github\\schoolattendanceandgrademanager_dotnet\\models\\kurzus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55C72AE7-25DA-479B-B29C-6A840BC2D947}|..\\Controllers\\Controllers.csproj|c:\\users\\hgpro\\onedrive\\dokumentumok\\github\\schoolattendanceandgrademanager_dotnet\\controllers\\feladatok.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{744D4179-36D0-4452-A7A3-A168A0EFAFA0}|..\\Models\\Models.csproj|c:\\users\\hgpro\\onedrive\\dokumentumok\\github\\schoolattendanceandgrademanager_dotnet\\models\\note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{744D4179-36D0-4452-A7A3-A168A0EFAFA0}|..\\Models\\Models.csproj|c:\\users\\hgpro\\onedrive\\dokumentumok\\github\\schoolattendanceandgrademanager_dotnet\\models\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{744D4179-36D0-4452-A7A3-A168A0EFAFA0}|..\\Models\\Models.csproj|c:\\users\\hgpro\\onedrive\\dokumentumok\\github\\schoolattendanceandgrademanager_dotnet\\models\\jegy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,38 +34,12 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 182,
-          "SelectedChildIndex": 5,
+          "DockedWidth": 226,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Note.cs",
-              "DocumentMoniker": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Models\\Note.cs",
-              "RelativeDocumentMoniker": "..\\Models\\Note.cs",
-              "ToolTip": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Models\\Note.cs",
-              "RelativeToolTip": "..\\Models\\Note.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T12:30:14.386Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Feladatok.cs",
-              "DocumentMoniker": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Controllers\\Feladatok.cs",
-              "RelativeDocumentMoniker": "..\\Controllers\\Feladatok.cs",
-              "ToolTip": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Controllers\\Feladatok.cs",
-              "RelativeToolTip": "..\\Controllers\\Feladatok.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAmwE4AAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T18:00:05.067Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Jegy.cs",
               "DocumentMoniker": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Models\\Jegy.cs",
               "RelativeDocumentMoniker": "..\\Models\\Jegy.cs",
@@ -73,11 +47,12 @@
               "RelativeToolTip": "..\\Models\\Jegy.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T13:28:05.785Z"
+              "WhenOpened": "2026-04-27T13:28:05.785Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Hallgato.cs",
               "DocumentMoniker": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Models\\Hallgato.cs",
               "RelativeDocumentMoniker": "..\\Models\\Hallgato.cs",
@@ -85,11 +60,12 @@
               "RelativeToolTip": "..\\Models\\Hallgato.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T17:58:48.946Z"
+              "WhenOpened": "2026-04-25T17:58:48.946Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Lesson.cs",
               "DocumentMoniker": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Models\\Lesson.cs",
               "RelativeDocumentMoniker": "..\\Models\\Lesson.cs",
@@ -97,24 +73,38 @@
               "RelativeToolTip": "..\\Models\\Lesson.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T17:59:13.527Z"
+              "WhenOpened": "2026-04-25T17:59:13.527Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Tanar.cs",
               "DocumentMoniker": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Models\\Tanar.cs",
               "RelativeDocumentMoniker": "..\\Models\\Tanar.cs",
               "ToolTip": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Models\\Tanar.cs",
               "RelativeToolTip": "..\\Models\\Tanar.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwB4AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-25T17:58:46.941Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
+              "Title": "Note.cs",
+              "DocumentMoniker": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Models\\Note.cs",
+              "RelativeDocumentMoniker": "..\\Models\\Note.cs",
+              "ToolTip": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Models\\Note.cs",
+              "RelativeToolTip": "..\\Models\\Note.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBQAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T12:30:14.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Kurzus.cs",
               "DocumentMoniker": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Models\\Kurzus.cs",
               "RelativeDocumentMoniker": "..\\Models\\Kurzus.cs",
@@ -122,25 +112,33 @@
               "RelativeToolTip": "..\\Models\\Kurzus.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T17:58:43.767Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 276,
-          "SelectedChildIndex": 0,
-          "Children": [
+              "WhenOpened": "2026-04-25T17:58:43.767Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\IskolaiJelenlet\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\IskolaiJelenlet\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAmwCgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAmwD8AAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-25T18:00:08.095Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Feladatok.cs",
+              "DocumentMoniker": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Controllers\\Feladatok.cs",
+              "RelativeDocumentMoniker": "..\\Controllers\\Feladatok.cs",
+              "ToolTip": "C:\\Users\\hgpro\\OneDrive\\Dokumentumok\\GitHub\\SchoolAttendanceAndGradeManager_DotNet\\Controllers\\Feladatok.cs",
+              "RelativeToolTip": "..\\Controllers\\Feladatok.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAQwFsAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T18:00:05.067Z",
               "EditorCaption": ""
             }
           ]

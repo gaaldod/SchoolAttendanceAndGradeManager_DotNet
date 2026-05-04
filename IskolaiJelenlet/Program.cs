@@ -36,10 +36,10 @@ namespace IskolaiJelenlet
             hallgatok.Add(testHallgato2);
             hallgatok.Add(testHallgato3);
 
+            
 
 
-
-            tanar = new Tanar(hallgatok);
+            var oktato = new Tanar(hallgatok);
             /*
             var testLesson = new Lesson(1,"asdasd",DateTime.Now);
             Console.WriteLine(testLesson.ToString());
@@ -61,12 +61,14 @@ namespace IskolaiJelenlet
                     case 0:
                         Console.Clear();
                         Console.WriteLine("Viszont látásra!");
-                        System.Threading.Thread.Sleep(3000);
+                        System.Threading.Thread.Sleep(1000);
                         break;
+                        
                     case 1:
-                        Orak.Add(Controllerek.OraInditas());
+                        oktato.AddOra(Controllerek.OraInditas());
+                       // Orak.Add(oktato.GetLesson);
                         Console.WriteLine("Óra rögzítve!");
-                        System.Threading.Thread.Sleep(3000);
+                        System.Threading.Thread.Sleep(2000);
                         break;
                     case 2:
                         Controllerek.DiakokKezelese();
@@ -75,14 +77,14 @@ namespace IskolaiJelenlet
                         Controllerek.JegyKezeles();
                         break;
                     case 4:
-                        Controllerek.JelenletKezeles(tanar);
+                        Controllerek.JelenletKezeles(oktato);
 
                         break;
                     case 5:
                         var Jegyzet = Controllerek.JegyzetHozzaadas();
                         Console.Clear();
                         Console.WriteLine("Jegyzet mentve!");
-                        System.Threading.Thread.Sleep(3000);
+                        System.Threading.Thread.Sleep(2000);
                         break;
                     default:
                         Console.Clear();

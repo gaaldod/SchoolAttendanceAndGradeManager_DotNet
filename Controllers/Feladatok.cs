@@ -16,7 +16,7 @@ namespace Controllers
             var oraKod = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Kérem adja meg az tanóra címét:");
-            var oraCim = Console.ReadLine();
+            string oraCim = Console.ReadLine();
 
             Console.Write("Kérem adja meg az tanóra kezdetének évét:");
             var ev = Convert.ToInt32(Console.ReadLine());
@@ -29,10 +29,9 @@ namespace Controllers
             Console.Write("Kérem adja meg az tanóra kezdetének percét:");
             var perc = Convert.ToInt32(Console.ReadLine());
 
-            var kezdes = new DateTime(ev,honap,nap,ora,perc,00);
-            string kezdesFormatted = DatumKonverter(kezdes);
+            string kezdesFormatted = DatumKonverter(new DateTime(ev, honap, nap, ora, perc, 00));
 
-            var Tanora = new Lesson(oraKod,oraCim,kezdes);
+            var Tanora = new Lesson(oraKod,oraCim, new DateTime(ev, honap, nap, ora, perc, 00));
             
             return Tanora;
 
@@ -43,10 +42,18 @@ namespace Controllers
         }
         public void JelenletKezeles(Tanar tanar)
         {
-            
+            Console.Clear();
             Console.WriteLine("Jelenlét nyilvantartó:");
-
-
+            
+            Console.Write("Adja meg a hiányzó diákok nevét vesszővel elválasztva:");
+            var sc = Console.ReadLine();
+            string[] hianyzoDiakok = sc.Split(",");
+            for (int i = 0; i < hianyzoDiakok.Length; i++)
+            {
+                hianyzoDiakok[i] = (hianyzoDiakok[i].StartsWith(" ")) ? hianyzoDiakok[i].Substring(1, hianyzoDiakok[i].Length)  : hianyzoDiakok[i];
+                
+            }
+            Console.ReadKey();
 
         }
         public void JegyKezeles()
