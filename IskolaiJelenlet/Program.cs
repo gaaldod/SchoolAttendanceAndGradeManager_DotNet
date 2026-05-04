@@ -9,7 +9,7 @@ namespace IskolaiJelenlet
     {
         static void Main(string[] args)
         {
-
+            //automatikus hiány számitás
            
             var Controllerek = new Feladatok();
             List<Lesson> Orak = new List<Lesson>();
