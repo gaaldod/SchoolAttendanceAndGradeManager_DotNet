@@ -45,7 +45,7 @@ Console.WriteLine("--------------------------------------------------\n");
 var manager = new ImportExportManager();
 
 // Test 1: Create Template
-// manager.CreateExcelTemplate();
+manager.CreateExcelTemplate();
 
 // Test 2: Import Data 
 // (Passes an empty list since the method asks for the file/directory path in the console anyway)
@@ -59,7 +59,7 @@ await manager.ExportDataAsync(coursesToExport, @"C:\Temp\Export", "xlsx");
 // Return immediately for testing purposes, ignoring the main menu
 
 //test 4: Export Data with user input
-await manager.InteractiveExportMenuAsync();
+//await manager.InteractiveExportMenuAsync();
 
 
 return 0;

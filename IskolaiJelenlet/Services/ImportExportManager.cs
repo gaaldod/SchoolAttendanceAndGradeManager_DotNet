@@ -11,6 +11,15 @@ namespace IskolaiJelenlet.Services
 {
     public class ImportExportManager
     {
+
+        public void MenuHandler_feladatok()
+        {
+            /*
+             opcio1: CreateExcelTemplate()
+            opcio2: ImportDataAsync()
+            opcio3: ExportDataAsync()
+             */
+        }
         public void CreateExcelTemplate()
         {
             //ask for the target directory. if left empty, or not a valid path, use C:\Temp\ as default
