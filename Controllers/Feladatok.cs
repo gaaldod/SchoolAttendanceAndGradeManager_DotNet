@@ -30,7 +30,7 @@ namespace Controllers
             var perc = Convert.ToInt32(Console.ReadLine());
 
             var kezdes = new DateTime(ev,honap,nap,ora,perc,00);
-            string kezdesFormatted = kezdes.ToString("yyyy-MM-dd HH:mm:ss");
+            string kezdesFormatted = DatumKonverter(kezdes);
 
             var Tanora = new Lesson(oraKod,oraCim,kezdes);
             
@@ -79,6 +79,12 @@ namespace Controllers
             var jegyezet = Console.ReadLine();
             return new Note(diakneve,Oranev,jegyezet);
         }
+
+        public String DatumKonverter(DateTime ido)
+        {
+            return ido.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
 
 
 
