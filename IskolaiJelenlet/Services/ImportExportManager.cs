@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Excel = ClosedXML.Excel;
 using Microsoft.Data.Sqlite;
 using Queries = IskolaiJelenlet.Services.SQLQueries_xlsxExporter;

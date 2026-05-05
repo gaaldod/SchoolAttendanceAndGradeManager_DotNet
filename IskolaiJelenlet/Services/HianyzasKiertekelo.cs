@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 
 namespace IskolaiJelenlet.Services
@@ -56,11 +51,11 @@ namespace IskolaiJelenlet.Services
                 double absentPercentage = (double)absentCount / totalLessons * 100;
                 double latePercentage = (double)lateCount / totalLessons * 100;
 
-                if (absentPercentage > 20)
+                if (absentPercentage > 30)
                 {
                     warnings.Add(new EvaluationResult(studentId, studentName, courseId, courseName, "Absent", absentPercentage));
                 }
-                if (latePercentage > 50)
+                if (latePercentage > 45)
                 {
                     warnings.Add(new EvaluationResult(studentId, studentName, courseId, courseName, "Late", latePercentage));
                 }
@@ -81,37 +76,86 @@ namespace IskolaiJelenlet.Services
                 suppressed = JsonSerializer.Deserialize<HashSet<string>>(json) ?? new HashSet<string>();
             }
 
-            // Filter skipped warnings
-            var activeWarnings = warnings.Where(w => !suppressed.Contains(w.GetUniqueKey())).OrderByDescending(w => w.Percentage).ToList();
+            // Filter skipped warnings - because the percentage is in the key, if the % changes, it shows up again!
+            var activeWarnings = warnings
+                .Where(w => !suppressed.Contains(w.GetUniqueKey()))
+                .OrderByDescending(w => w.Percentage)
+                .ToList();
 
             if (activeWarnings.Count == 0) return;
 
             Console.WriteLine("\n=== AUTOMATIC ATTENDANCE WARNINGS ===");
-
-            bool hasLateWarnings = false;
             foreach (var w in activeWarnings)
             {
                 Console.WriteLine($"- {w.StudentName} ({w.CourseName}): {w.Percentage:F1}% {w.Type}");
-                if (w.Type == "Late") hasLateWarnings = true;
             }
 
-            if (hasLateWarnings)
+            Console.WriteLine("\nWhat would you like to do with these warnings?");
+            Console.WriteLine("1: Save list to C:\\Temp and suppress them (until the percentage changes)");
+            Console.WriteLine("2: Just suppress them (until the percentage changes)");
+            Console.WriteLine("3: Skip to main menu (will show again next time)");
+            
+            bool validChoice = false;
+            while (!validChoice)
             {
-                Console.Write("\nWould you like to suppress these 'Late' warnings for future runs? (y/n): ");
-                var key = Console.ReadLine()?.Trim().ToLower();
-                if (key == "y")
+                Console.Write("Select an option (1-3): ");
+                var key = Console.ReadLine()?.Trim();
+                
+                switch (key)
                 {
-                    foreach (var w in activeWarnings.Where(x => x.Type == "Late"))
-                    {
-                        suppressed.Add(w.GetUniqueKey());
-                    }
-                    File.WriteAllText(SuppressedWarningsFile, JsonSerializer.Serialize(suppressed));
-                    Console.WriteLine("Late warnings suppressed.");
+                    case "1":
+                        SaveWarningsToTemp(activeWarnings);
+                        SuppressWarnings(activeWarnings, suppressed);
+                        Console.WriteLine("List saved and warnings suppressed. Loading main menu...");
+                        System.Threading.Thread.Sleep(1500); // Pause so they can read the message
+                        validChoice = true;
+                        break;
+                    case "2":
+                        SuppressWarnings(activeWarnings, suppressed);
+                        Console.WriteLine("Warnings suppressed. Loading main menu...");
+                        System.Threading.Thread.Sleep(1500); // Pause so they can read the message
+                        validChoice = true;
+                        break;
+                    case "3":
+                        validChoice = true; // Instantly go to menu
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option.");
+                        break;
                 }
             }
+        }
 
-            Console.WriteLine("Press any key to continue to the main menu...");
-            Console.ReadKey(true);
+        private void SaveWarningsToTemp(List<EvaluationResult> activeWarnings)
+        {
+            string targetDir = @"C:\Temp";
+            if (!Directory.Exists(targetDir))
+            {
+                Directory.CreateDirectory(targetDir);
+            }
+
+            string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            string filePath = Path.Combine(targetDir, $"AttendanceWarnings_{timestamp}.txt");
+
+            using StreamWriter writer = new StreamWriter(filePath);
+            writer.WriteLine($"Attendance Warnings Report - {DateTime.Now}");
+            writer.WriteLine(new string('-', 50));
+            foreach (var w in activeWarnings)
+            {
+                writer.WriteLine($"{w.StudentName} | Course: {w.CourseName} | Issue: {w.Type} | Percentage: {w.Percentage:F1}%");
+            }
+            
+            Console.WriteLine($"\nFile successfully saved to: {filePath}");
+        }
+
+        private void SuppressWarnings(List<EvaluationResult> activeWarnings, HashSet<string> suppressed)
+        {
+            foreach (var w in activeWarnings)
+            {
+                suppressed.Add(w.GetUniqueKey());
+            }
+            // Save updated suppressed warnings to file, in the directory the program is launched from
+            File.WriteAllText(SuppressedWarningsFile, JsonSerializer.Serialize(suppressed));
         }
     }
 
@@ -134,6 +178,7 @@ namespace IskolaiJelenlet.Services
             Percentage = percentage;
         }
 
-        public string GetUniqueKey() => $"{StudentId}_{CourseId}_{Type}";
+        // By putting the formatted percentage inside the key, the key changes if the percentage changes!
+        public string GetUniqueKey() => $"{StudentId}_{CourseId}_{Type}_{Percentage:F1}";
     }
 }
