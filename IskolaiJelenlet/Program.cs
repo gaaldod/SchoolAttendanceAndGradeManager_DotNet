@@ -1,109 +1,115 @@
-﻿using Controllers;
-using System;
-using System.IO;
-using Microsoft.Data.Sqlite;
-using IskolaiJelenlet.Services;
-using ImportExportManager = IskolaiJelenlet.Services.ImportExportManager;
-using System.Linq;
-
-// Get the directory where the .exe currently lives
-string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-string dbPath = Path.Combine(baseDir, "Database", "iskola.db");
-
-string connectionString = $"Data Source={dbPath}";
-// --- DIAGNOSTIC TEST: Check iskola.db tables ---
-Console.WriteLine($"Looking for DB at: {Path.GetFullPath(dbPath)}");
-
-if (File.Exists(dbPath))
-{
-    Console.WriteLine("Database file exists! Reading tables...");
-    using var connection = new SqliteConnection($"Data Source={dbPath}");
-    connection.Open();
-
-    using var command = connection.CreateCommand();
-    command.CommandText = "SELECT name FROM sqlite_master WHERE type='table'";
-    
-    using var reader = command.ExecuteReader();
-    bool hasTables = false;
-    while (reader.Read())
-    {
-        hasTables = true;
-        Console.WriteLine($"- Found Table: {reader.GetString(0)}");
-    }
-
-    if (!hasTables)
-    {
-        Console.WriteLine("The database exists, but it contains NO tables.");
-    }
-}
-else
-{
-    Console.WriteLine("CRITICAL: The database file does NOT exist at this location.");
-}
-Console.WriteLine("--------------------------------------------------\n");
-
-var manager = new ImportExportManager();
-
-// Test 1: Create Template
-manager.CreateExcelTemplate();
-
-// Test 2: Import Data 
-// (Passes an empty list since the method asks for the file/directory path in the console anyway)
-//await manager.ImportDataAsync(Enumerable.Empty<string>());
-
-/*
-// Test 3: Export Data (using dummy properties for testing)
-var coursesToExport = new[] { "Math101", "History101" };
-await manager.ExportDataAsync(coursesToExport, @"C:\Temp\Export", "xlsx");
-*/
-// Return immediately for testing purposes, ignoring the main menu
-
-//test 4: Export Data with user input
-//await manager.InteractiveExportMenuAsync();
-
-
-return 0;
+﻿using System.Net.WebSockets;
+using System.Security.Cryptography.X509Certificates;
+using Controllers;
+using Models;
 
 namespace IskolaiJelenlet
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+            //automatikus hiány számitás
+           
+            var Controllerek = new Feladatok();
+            List<Lesson> Orak = new List<Lesson>();
+            Controllerek.OrakListaFeltoltes();
+            List<String> menuPontok = new List<string>();
+            Tanar tanar;
+            menuPontok.Add("Kilépés");
+            menuPontok.Add("Óra indítás");
+            menuPontok.Add("Diákok kezelése");
+            menuPontok.Add("Jegy kezelő");
+            menuPontok.Add("Jelenlét kezelő");
+            menuPontok.Add("Jegyzet hozzáadása");
+
+
+
+             String[] test = {"12","Kiss","Bela","asd@faszom.org"};
+             String[] test2 = {"1343","Nagy","Bsdfsdela","asdfsdfsd@faszom.org"};
+             String[] test3 = {"125","Kiss","Belsdfa","asd@sdffaszom.org"};
+             var testHallgato = new Hallgato(test);
+             var testHallgato2 = new Hallgato(test2);
+             var testHallgato3 = new Hallgato(test3);
+            List<Hallgato> hallgatok = new List<Hallgato>();
+            hallgatok.Add(testHallgato);
+            hallgatok.Add(testHallgato2);
+            hallgatok.Add(testHallgato3);
+
             
 
+
+            var oktato = new Tanar(hallgatok);
+            /*
+            var testLesson = new Lesson(1,"asdasd",DateTime.Now);
+            Console.WriteLine(testLesson.ToString());
+            string[] asd = testLesson.ConvertToRekord();
+            Console.WriteLine(asd[2]);
+            */
             var menu = 0;
-            var Controllerek = new Feladatok();
-            
             do
             {
-                Console.Write("1: Óra indítás\n2: Óra befejezés" +
-                    "\n3: Diákok kezelése\n4: Jegy kezelő\n5: Jelenlét kezelő\n0: Kilépés\nKérem válasszon menüpontot:");
+                for(int i = 0; i < menuPontok.Count; i++)
+                {
+                    Console.WriteLine(i+": "+ menuPontok[i]);
+                }
+                Console.Write("Kérem válasszon menüpontot: ");
                 var scanner = Console.ReadLine();
-                menu=Convert.ToInt32(scanner);
+                menu = Convert.ToInt32(scanner);
+                switch (menu)
+                {
+                    case 0:
+                        Console.Clear();
+                        Console.WriteLine("Viszont látásra!");
+                        System.Threading.Thread.Sleep(1000);
+                        break;
+                        
+                    case 1:
+                        oktato.AddOra(Controllerek.OraInditas());
+                       // Orak.Add(oktato.GetLesson);
+                        Console.WriteLine("Óra rögzítve!");
+                        System.Threading.Thread.Sleep(2000);
+                        break;
+                    case 2:
+                        Controllerek.DiakokKezelese();
+                        break;
+                    case 3:
+                        Controllerek.JegyKezeles();
+                        break;
+                    case 4:
+                        Controllerek.JelenletKezeles(oktato);
+
+                        break;
+                    case 5:
+                        var Jegyzet = Controllerek.JegyzetHozzaadas();
+                        Console.Clear();
+                        Console.WriteLine("Jegyzet mentve!");
+                        System.Threading.Thread.Sleep(2000);
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("Nincs ilyen menüpont, próbálja újra!");
+                        System.Threading.Thread.Sleep(3000);
+                        break;
+                }
                 Console.Clear();
-            } while ( (menu < 0) || (menu > 5) );
-            Console.Clear();
-            switch (menu)
-            {
-                case 1:
-                    Controllerek.OraInditas();
-                    break;
-                case 2:
-                    Controllerek.OraBefejezes();
-                    break;
-                case 3:
-                    Controllerek.DiakokKezelese();
-                    break;
-                case 4:
-                    Controllerek.JegyKezeles();
-                    break;
-                case 5:
-                    Controllerek.JelenletKezeles();
-                    break;
-                default:
-                    break;
-            }
+            } while (menu !=0);
+            
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
         }
     }
 }

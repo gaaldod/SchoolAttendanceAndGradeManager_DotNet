@@ -52,20 +52,6 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
-/IskolaiJelenlet/.vs/CopilotSnapshots/9BE3B8230D04E1498A64B651629F88B0
-/IskolaiJelenlet/.vs/IskolaiJelenlet/copilot-chat/3d1e56cb/sessions
-/IskolaiJelenlet/.vs/IskolaiJelenlet/CopilotIndices/18.3.511.5503
-/IskolaiJelenlet/.vs/IskolaiJelenlet
-/.vs/SchoolAttendanceAndGradeManager_DotNet/FileContentIndex
-/.vs/SchoolAttendanceAndGradeManager_DotNet/CopilotIndices
-/IskolaiJelenlet/.vs/IskolaiJelenlet/DesignTimeBuild/.dtbcache.v2
-/IskolaiJelenlet/.vs/ProjectEvaluation/iskolaijelenlet.metadata.v9.bin
-/IskolaiJelenlet/.vs/ProjectEvaluation/iskolaijelenlet.projects.v9.bin
-/IskolaiJelenlet/.vs/ProjectEvaluation/iskolaijelenlet.strings.v9.bin
-/.vs/SchoolAttendanceAndGradeManager_DotNet/v17/.wsuo
-/.vs/SchoolAttendanceAndGradeManager_DotNet/v17/DocumentLayout.backup.json
-/.vs/SchoolAttendanceAndGradeManager_DotNet/v17/DocumentLayout.json
-/.vs/ProjectSettings.json
-/.vs/slnx.sqlite
-/.vs/VSWorkspaceState.json
-/IskolaiJelenlet/.vs/IskolaiJelenlet/DesignTimeBuild/.dtbcache.v2
+
+# Visual Studio cache/options directory
+.vs/
