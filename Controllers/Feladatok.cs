@@ -16,8 +16,9 @@ namespace Controllers
             var oraKod = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Kérem adja meg az tanóra címét:");
+            #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             string oraCim = Console.ReadLine();
-
+            #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             Console.Write("Kérem adja meg az tanóra kezdetének évét:");
             var ev = Convert.ToInt32(Console.ReadLine());
             Console.Write("Kérem adja meg az tanóra kezdetének hónapját:");
@@ -78,7 +79,7 @@ namespace Controllers
         {
             Console.Clear();   
             Console.WriteLine("Jegyzet írása:");
-            Console.Write("Adja meg a diákk nevét: ");
+            Console.Write("Adja meg a diák nevét: ");
             var diakneve = Console.ReadLine();
             Console.Write("Adja meg az óra nevét: ");
             var Oranev = Console.ReadLine();

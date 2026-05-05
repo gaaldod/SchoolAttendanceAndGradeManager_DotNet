@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="algoritmus.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="algoritmus.cs" />
+  </ItemGroup>
+
 </Project>
