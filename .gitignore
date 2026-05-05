@@ -52,23 +52,6 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
-/IskolaiJelenlet/.vs/IskolaiJelenlet/copilot-chat/3d1e56cb/sessions
-/IskolaiJelenlet/.vs/IskolaiJelenlet/CopilotIndices/18.3.511.5503
-/IskolaiJelenlet/.vs/CopilotSnapshots/9BE3B8230D04E1498A64B651629F88B0
-/IskolaiJelenlet/.vs/IskolaiJelenlet/DesignTimeBuild/.dtbcache.v2
-/IskolaiJelenlet/.vs/IskolaiJelenlet/FileContentIndex/0ef27f12-6fe9-4fd1-af9c-4948212f4b61.vsidx
-/IskolaiJelenlet/.vs/IskolaiJelenlet/FileContentIndex/1bfa5cab-335c-47ab-8864-d4d4d1e0d0aa.vsidx
-/IskolaiJelenlet/.vs/IskolaiJelenlet/FileContentIndex/27332bfe-7264-4466-a4dd-471cd8316162.vsidx
-/IskolaiJelenlet/.vs/IskolaiJelenlet/FileContentIndex/5b75f598-1573-4c86-9d65-60804a7afac2.vsidx
-/IskolaiJelenlet/.vs/IskolaiJelenlet/FileContentIndex/aa4eb93d-aaf0-44eb-8697-5457ad4ba919.vsidx
-/IskolaiJelenlet/.vs/IskolaiJelenlet/FileContentIndex/f99d2cf9-3e95-420d-beb2-21d7a7608512.vsidx
-/IskolaiJelenlet/.vs/IskolaiJelenlet/v18/.futdcache.v2
-/IskolaiJelenlet/.vs/IskolaiJelenlet/v18/.suo
-/IskolaiJelenlet/.vs/IskolaiJelenlet/v18/DocumentLayout.backup.json
-/IskolaiJelenlet/.vs/IskolaiJelenlet/v18/DocumentLayout.json
-/IskolaiJelenlet/.vs/ProjectEvaluation/iskolaijelenlet.metadata.v10.bin
-/IskolaiJelenlet/.vs/ProjectEvaluation/iskolaijelenlet.metadata.v9.bin
-/IskolaiJelenlet/.vs/ProjectEvaluation/iskolaijelenlet.projects.v10.bin
-/IskolaiJelenlet/.vs/ProjectEvaluation/iskolaijelenlet.projects.v9.bin
-/IskolaiJelenlet/.vs/ProjectEvaluation/iskolaijelenlet.strings.v10.bin
-/IskolaiJelenlet/.vs/ProjectEvaluation/iskolaijelenlet.strings.v9.bin
+
+# Visual Studio cache/options directory
+.vs/

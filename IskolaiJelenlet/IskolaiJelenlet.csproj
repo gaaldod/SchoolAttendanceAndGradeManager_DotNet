@@ -8,8 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Controllers\Controllers.csproj" />
-    <ProjectReference Include="..\Models\Models.csproj" />
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.7" />
   </ItemGroup>
+	
+  <ItemGroup>
+    <None Update="Database\iskola.db">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
+  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Controllers\Controllers.csproj" />
+		<ProjectReference Include="..\Models\Models.csproj" />
+	</ItemGroup>
 
 </Project>
