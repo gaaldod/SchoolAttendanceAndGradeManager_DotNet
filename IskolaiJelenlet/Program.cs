@@ -1,7 +1,9 @@
 ﻿using System.Net.WebSockets;
 using System.Security.Cryptography.X509Certificates;
 using Controllers;
+using IskolaiJelenlet.Services;
 using Models;
+using ImportExportManager = IskolaiJelenlet.Services.ImportExportManager;
 
 namespace IskolaiJelenlet
 {
@@ -22,6 +24,7 @@ namespace IskolaiJelenlet
             menuPontok.Add("Jegy kezelő");
             menuPontok.Add("Jelenlét kezelő");
             menuPontok.Add("Jegyzet hozzáadása");
+            menuPontok.Add("Excel import/export");
 
 
 
@@ -85,6 +88,10 @@ namespace IskolaiJelenlet
                         Console.Clear();
                         Console.WriteLine("Jegyzet mentve!");
                         System.Threading.Thread.Sleep(2000);
+                        break;
+                    case 6:
+                        var importExportManager = new ImportExportManager();
+                        importExportManager.MenuHandler_feladatok();
                         break;
                     default:
                         Console.Clear();

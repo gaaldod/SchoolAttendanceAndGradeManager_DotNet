@@ -14,17 +14,32 @@ namespace IskolaiJelenlet.Services
 
         public void MenuHandler_feladatok()
         {
-            /*
-             opcio1: CreateExcelTemplate()
-            opcio2: ImportDataAsync()
-            opcio3: ExportDataAsync()
-             */
+            Console.WriteLine("\n=== EXCEL IMPORT/EXPORT MENU ===");
+            Console.WriteLine("1: Create Excel Template");
+            Console.WriteLine("2: Import Data from Excel");
+            Console.WriteLine("3: Export Data to Excel");
+            Console.WriteLine("0: Return to Main Menu");
+            Console.Write("\nSelect an option: ");
+            var key = Console.ReadKey(true).KeyChar;
+    
+            switch (key)
+            {
+                case '1': CreateExcelTemplate(); break;
+                case '2': ImportDataAsync(new List<string>()).Wait(); break; // Pass empty list for now
+                case '3': InteractiveExportMenuAsync().Wait(); break;
+                case '0': return;
+            }
         }
+
         public void CreateExcelTemplate()
         {
             //ask for the target directory. if left empty, or not a valid path, use C:\Temp\ as default
             Console.WriteLine("Enter target directory for Excel template (default: C:\\Temp\\):");
+            
+            #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             string targetDirectory = Console.ReadLine();
+            #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+            
             if (string.IsNullOrWhiteSpace(targetDirectory))
             {
                 Console.WriteLine($"No target specified, Using default directory: {targetDirectory}");
@@ -369,20 +384,6 @@ namespace IskolaiJelenlet.Services
 
             Console.WriteLine($"\nStarting import for: {selectedFilePath}");
             await ProcessImportFileAsync(selectedFilePath);
-        }
-        public async Task ExportDataToExcel(IEnumerable<string> coursesToExport, string targetDirectory, string format)
-        {
-            //connect to iskola.db and ask the user multiple times to select courses, students or grades to export for a specific student, or students on a course. when a selection is finished, go back to "do you want to add another item to the export?" with 0 meaning no, export.
-
-        }
-
-        private Task ProcessExportCourse()
-        {
-            // Placeholder for export logic, e.g., fetching course data and writing to Excel
-
-
-            // Returning completed task as a stub
-            return Task.CompletedTask;
         }
 
         public async Task InteractiveExportMenuAsync()
