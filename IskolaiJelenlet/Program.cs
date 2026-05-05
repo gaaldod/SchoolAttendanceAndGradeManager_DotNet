@@ -3,16 +3,15 @@ using System.Security.Cryptography.X509Certificates;
 using Controllers;
 using IskolaiJelenlet.Services;
 using Models;
+using IskolaiJelenlet.Services;
 using ImportExportManager = IskolaiJelenlet.Services.ImportExportManager;
 
 namespace IskolaiJelenlet
 {
     public class Program
     {
-        static void Main(string[] args)
-        {
-            //automatikus hiány számitás
-           
+        static async Task Main(string[] args) //changed it to async so the HianyzasKiertekelo can run asynchronously and not block the main thread
+        {         
             var Controllerek = new Feladatok();
             List<Lesson> Orak = new List<Lesson>();
             Controllerek.OrakListaFeltoltes();
@@ -49,6 +48,12 @@ namespace IskolaiJelenlet
             string[] asd = testLesson.ConvertToRekord();
             Console.WriteLine(asd[2]);
             */
+
+            var evaluator = new HianyzasKiertekelo();
+            await evaluator.EvaluateAbsencesAsync();
+
+
+
             var menu = 0;
             do
             {

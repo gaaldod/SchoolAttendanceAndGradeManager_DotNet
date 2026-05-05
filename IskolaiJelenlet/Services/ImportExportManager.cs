@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Excel = ClosedXML.Excel;
 using Microsoft.Data.Sqlite;
 using Queries = IskolaiJelenlet.Services.SQLQueries_xlsxExporter;
@@ -474,44 +469,44 @@ namespace IskolaiJelenlet.Services
             // 1. Map the query and prompt for required parameters (showing lists)
             switch (exportType)
             {
-                case "AttendanceAll": query = SQLQueries_xlsxExporter.AttendanceAll; break;
+                case "AttendanceAll": query = Queries.AttendanceAll; break;
                 case "AttendanceByStudent":
-                    query = SQLQueries_xlsxExporter.AttendanceByStudent;
+                    query = Queries.AttendanceByStudent;
                     await DisplayAvailableStudentsAsync(connection);
                     studentId = PromptForInput("Enter Student ID: ");
                     break;
                 case "AttendanceByLesson":
-                    query = SQLQueries_xlsxExporter.AttendanceByLesson;
+                    query = Queries.AttendanceByLesson;
                     await DisplayAvailableLessonsAsync(connection);
                     lessonId = PromptForInput("Enter Lesson ID: ");
                     break;
-                case "CoursesAll": query = SQLQueries_xlsxExporter.CoursesAll; break;
-                case "GradesAll": query = SQLQueries_xlsxExporter.GradesAll; break;
+                case "CoursesAll": query = Queries.CoursesAll; break;
+                case "GradesAll": query = Queries.GradesAll; break;
                 case "GradesByStudent":
-                    query = SQLQueries_xlsxExporter.GradesByStudent;
+                    query = Queries.GradesByStudent;
                     await DisplayAvailableStudentsAsync(connection);
                     studentId = PromptForInput("Enter Student ID: ");
                     break;
                 case "GradesByCourse":
-                    query = SQLQueries_xlsxExporter.GradesByCourse;
+                    query = Queries.GradesByCourse;
                     await DisplayAvailableCoursesAsync(connection);
                     courseId = PromptForInput("Enter Course ID: ");
                     break;
                 case "GradesByCourseAndStudent":
-                    query = SQLQueries_xlsxExporter.GradesByCourseAndStudent;
+                    query = Queries.GradesByCourseAndStudent;
                     await DisplayAvailableCoursesAsync(connection);
                     courseId = PromptForInput("Enter Course ID: ");
                     await DisplayAvailableStudentsAsync(connection);
                     studentId = PromptForInput("Enter Student ID: ");
                     break;
-                case "LessonsAll": query = SQLQueries_xlsxExporter.LessonsAll; break;
-                case "NotesAll": query = SQLQueries_xlsxExporter.NotesAll; break;
+                case "LessonsAll": query = Queries.LessonsAll; break;
+                case "NotesAll": query = Queries.NotesAll; break;
                 case "NotesByStudent":
-                    query = SQLQueries_xlsxExporter.NotesByStudent;
+                    query = Queries.NotesByStudent;
                     await DisplayAvailableStudentsAsync(connection);
                     studentId = PromptForInput("Enter Student ID: ");
                     break;
-                case "StudentsAll": query = SQLQueries_xlsxExporter.StudentsAll; break;
+                case "StudentsAll": query = Queries.StudentsAll; break;
                 default:
                     Console.WriteLine("Unknown export type.");
                     return;
