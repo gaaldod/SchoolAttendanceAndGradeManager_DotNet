@@ -114,8 +114,6 @@ namespace IskolaiJelenlet.Services
             workbook.SaveAs(targetDirectory);
         }
 
-
-
         private async Task ProcessImportFileAsync(string filePath)
         {
             string? extension = Path.GetExtension(filePath)?.ToLower();

@@ -1,9 +1,6 @@
-﻿using System.Net.WebSockets;
-using System.Security.Cryptography.X509Certificates;
-using Controllers;
+﻿using Controllers;
 using IskolaiJelenlet.Services;
 using Models;
-using IskolaiJelenlet.Services;
 using ImportExportManager = IskolaiJelenlet.Services.ImportExportManager;
 
 namespace IskolaiJelenlet
@@ -25,8 +22,6 @@ namespace IskolaiJelenlet
             menuPontok.Add("Jegyzet hozzáadása");
             menuPontok.Add("Excel import/export");
 
-
-
              String[] test = {"12","Kiss","Bela","asd@faszom.org"};
              String[] test2 = {"1343","Nagy","Bsdfsdela","asdfsdfsd@faszom.org"};
              String[] test3 = {"125","Kiss","Belsdfa","asd@sdffaszom.org"};
@@ -37,9 +32,6 @@ namespace IskolaiJelenlet
             hallgatok.Add(testHallgato);
             hallgatok.Add(testHallgato2);
             hallgatok.Add(testHallgato3);
-
-            
-
 
             var oktato = new Tanar(hallgatok);
             /*
@@ -106,22 +98,6 @@ namespace IskolaiJelenlet
                 }
                 Console.Clear();
             } while (menu !=0);
-            
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
         }
     }
 }

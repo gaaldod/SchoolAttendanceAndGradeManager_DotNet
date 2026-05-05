@@ -30,9 +30,5 @@ namespace Models
             return _student+" "+_lesson+" "+_content+" "+_createdTime;
         }
 
-
-
-
-
     }
 }

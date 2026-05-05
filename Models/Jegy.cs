@@ -23,9 +23,5 @@ namespace Models
             return String.Format("{0,3:d}{1,-5:s}",_erdemjegy, _targy);
         }
 
-
-
-
-
     }
 }
