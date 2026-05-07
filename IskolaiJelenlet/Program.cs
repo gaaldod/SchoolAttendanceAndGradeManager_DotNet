@@ -18,7 +18,6 @@ namespace IskolaiJelenlet
             menuPontok.Add("Óra indítás");
             menuPontok.Add("Diák adatainak módosítása/Törlése");
             menuPontok.Add("Jegy módosítása/törlése");
-            menuPontok.Add("Jelenlét kezelő");
             menuPontok.Add("Jegyzet hozzáadása");
             menuPontok.Add("Excel import/export");
 
@@ -66,23 +65,25 @@ namespace IskolaiJelenlet
                         break;
                     case 2:
                         Controllerek.DiakokKezelese();
+                        Console.WriteLine("Feladat végrehajtva, vissza a főmenübe!");
+                        System.Threading.Thread.Sleep(2000);
                         break;
                     case 3:
                         Controllerek.JegyKezeles();
+                        Console.WriteLine("Feladat végrehajtva, vissza a főmenübe!");
+                        System.Threading.Thread.Sleep(2000);
                         break;
                     case 4:
-                        Controllerek.JelenletKezeles(oktato);
-
-                        break;
-                    case 5:
                         var Jegyzet = Controllerek.JegyzetHozzaadas();
                         Console.Clear();
                         Console.WriteLine("Jegyzet mentve!");
                         System.Threading.Thread.Sleep(2000);
                         break;
-                    case 6:
+                    case 5:
                         var importExportManager = new ImportExportManager();
                         importExportManager.MenuHandler_feladatok();
+                        Console.WriteLine("Feladat végrehajtva, vissza a főmenübe!");
+                        System.Threading.Thread.Sleep(2000);
                         break;
                     default:
                         Console.Clear();
