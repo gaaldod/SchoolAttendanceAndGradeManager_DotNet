@@ -39,7 +39,6 @@ namespace IskolaiJelenlet.Services
             {
                 Console.WriteLine($"No target specified, Using default directory: {targetDirectory}");
                 targetDirectory = @"C:\Temp\";
-                //if c:\Temp\ does not exist, create it
             }
             else if (!Directory.Exists(targetDirectory))
             {
@@ -101,11 +100,10 @@ namespace IskolaiJelenlet.Services
                 validation.ErrorMessage = "Please enter a valid date (e.g., yyyy-mm-dd).";
             }
 
-            // --- ADD THIS NEW HELPER METHOD FOR EMPTY ROWS ---
             void AddEmptyRowWarning(Excel.IXLWorksheet sheet)
             {
-                // Apply strictly to Column 1 (from Row 3 downwards) to avoid overlapping with Date columns
-                var range = sheet.Range(3, 1, 1048576, 1);
+                // Apply strictly to Column 1 (from row 3 downwards) to avoid overlapping with Date columns
+                var range = sheet.Range(3, 1, 100000, 1);
                 
                 var validation = range.CreateDataValidation();
                 validation.AllowedValues = Excel.XLAllowedValues.Custom;
@@ -113,7 +111,7 @@ namespace IskolaiJelenlet.Services
                 // Set the custom formula to evaluate the row above's ID column
                 validation.Value = "=NOT(ISBLANK($A2))";
                 
-                // THE FIX: Force Excel to evaluate the rule even when the user leaves the cell blank
+                //force Excel to evaluate the rule even when the user leaves the cell blank
                 validation.IgnoreBlanks = false;
                 
                 validation.ShowErrorMessage = true;
@@ -127,7 +125,7 @@ namespace IskolaiJelenlet.Services
             FormatAsDateColumn(noteSheet, 4);    // created_at 
             FormatAsDateColumn(studentSheet, 4); // enrollment_date 
 
-            // Apply the empty row restrictions (No need for column count anymore, strictly Column 1):
+            // Apply the empty row restrictions (Column 1):
             AddEmptyRowWarning(attendanceSheet);
             AddEmptyRowWarning(courseSheet);
             AddEmptyRowWarning(gradeSheet);
@@ -359,7 +357,7 @@ namespace IskolaiJelenlet.Services
 
                         if (fileName?.Equals("cancel", StringComparison.OrdinalIgnoreCase) == true)
                         {
-                            break; // Break the inner loop, continue outer path prompt
+                            break;
                         }
 
                         if (!string.IsNullOrWhiteSpace(fileName))
@@ -380,11 +378,11 @@ namespace IskolaiJelenlet.Services
 
                     if (fileSelected)
                     {
-                        break; // Step out of the main retry loop
+                        break;
                     }
                     else
                     {
-                        attempts++; // Count "cancel" as an attempt
+                        attempts++;
                     }
                 }
                 else
@@ -591,8 +589,7 @@ namespace IskolaiJelenlet.Services
             Console.ReadKey(true);
         }
 
-        // --- HELPER METHODS FOR INTERACTIVE LISTS ---
-        
+        // HELPER METHODS FOR INTERACTIVE LISTS
         private string PromptForInput(string message)
         {
             Console.Write(message);
