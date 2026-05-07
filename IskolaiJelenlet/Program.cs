@@ -22,16 +22,9 @@ namespace IskolaiJelenlet
             menuPontok.Add("Jegyzet hozzáadása");
             menuPontok.Add("Excel import/export");
 
-             String[] test = {"12","Kiss","Bela","asd@faszom.org"};
-             String[] test2 = {"1343","Nagy","Bsdfsdela","asdfsdfsd@faszom.org"};
-             String[] test3 = {"125","Kiss","Belsdfa","asd@sdffaszom.org"};
-             var testHallgato = new Hallgato(test);
-             var testHallgato2 = new Hallgato(test2);
-             var testHallgato3 = new Hallgato(test3);
+
             List<Hallgato> hallgatok = new List<Hallgato>();
-            hallgatok.Add(testHallgato);
-            hallgatok.Add(testHallgato2);
-            hallgatok.Add(testHallgato3);
+
 
             var oktato = new Tanar(hallgatok);
             /*
