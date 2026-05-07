@@ -171,7 +171,129 @@ namespace Controllers
 
         public void DiakokKezelese()
         {
-            Console.WriteLine("A diákok kezelése jelenleg az Excel Import/Export fülön lehetséges!");
+            Console.Clear();
+            Console.WriteLine("=== Diákok Kezelése (Módosítás / Törlés) ===");
+            Console.Write("Kérem adja meg a diák azonosítóját (Student ID): ");
+            var studentId = Console.ReadLine()?.Trim();
+
+            if (string.IsNullOrWhiteSpace(studentId)) return;
+
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string dbPath = Path.Combine(baseDir, "Database", "iskola.db");
+
+            using var connection = new SqliteConnection($"Data Source={dbPath}");
+            connection.Open();
+
+            // 1. Verify student exists and show their details
+            string checkStudentQuery = "SELECT first_name, last_name, email FROM Student WHERE student_id = @student_id";
+            using var checkCmd = new SqliteCommand(checkStudentQuery, connection);
+            checkCmd.Parameters.AddWithValue("@student_id", studentId);
+
+            string currentFirstName = "", currentLastName = "", currentEmail = "";
+            bool studentExists = false;
+
+            using (var reader = checkCmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    studentExists = true;
+                    currentFirstName = reader.GetString(0);
+                    currentLastName = reader.GetString(1);
+                    currentEmail = reader.GetString(2);
+                }
+            }
+
+            if (!studentExists)
+            {
+                Console.WriteLine("A megadott azonosítóval nem található diák az adatbázisban. Nyomjon meg egy gombot, hogy visszatérjen a menübe.");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine($"\nKiválasztott diák: {currentLastName} {currentFirstName} ({currentEmail})");
+            Console.WriteLine("M: Módosítás");
+            Console.WriteLine("T: Törlés");
+            Console.Write("Válasszon műveletet: ");
+            var action = Console.ReadLine()?.Trim().ToUpper();
+
+            if (action == "M") // MODIFY
+            {
+                Console.WriteLine("\nMit szeretne módosítani?");
+                Console.WriteLine("1: Vezetéknév (last_name)");
+                Console.WriteLine("2: Keresztnév (first_name)");
+                Console.WriteLine("3: Email (email)");
+                Console.Write("Válasszon műveletet (1-3): ");
+                var modChoice = Console.ReadLine()?.Trim();
+
+                string columnToUpdate = "";
+                switch (modChoice)
+                {
+                    case "1": columnToUpdate = "last_name"; break;
+                    case "2": columnToUpdate = "first_name"; break;
+                    case "3": columnToUpdate = "email"; break;
+                    default:
+                        Console.WriteLine("Érvénytelen választás.");
+                        return;
+                }
+
+                Console.Write($"Kérem adja meg az új értéket ({columnToUpdate}): ");
+                var newValue = Console.ReadLine()?.Trim();
+
+                if (string.IsNullOrWhiteSpace(newValue)) return;
+
+                string updateQuery = $"UPDATE Student SET {columnToUpdate} = @new_value WHERE student_id = @student_id";
+                using var updateCmd = new SqliteCommand(updateQuery, connection);
+                updateCmd.Parameters.AddWithValue("@new_value", newValue);
+                updateCmd.Parameters.AddWithValue("@student_id", studentId);
+
+                updateCmd.ExecuteNonQuery();
+                Console.WriteLine("\nSikeres módosítás!");
+            }
+            else if (action == "T") // DELETE
+            {
+                // Final warning
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nBiztos törölni szeretné ezt a diákot? Ez örökre törölni fogja a hozzá kapcsolódó érdemjegyeket, jegyzeteket és jelenlét információkat! (y/n)");
+                Console.ResetColor();
+                var confirm = Console.ReadLine()?.Trim().ToLower();
+
+                if (confirm == "y")
+                {
+                    // Use a transaction so if something fails, we don't end up with a half-deleted student
+                    using var transaction = connection.BeginTransaction();
+                    try
+                    {
+                        // 1. Delete Dependencies first
+                        string[] dependencies = { "Attendance", "Grade", "Note" };
+                        foreach (var table in dependencies)
+                        {
+                            using var deleteDepCmd = new SqliteCommand($"DELETE FROM {table} WHERE student_id = @student_id", connection, transaction);
+                            deleteDepCmd.Parameters.AddWithValue("@student_id", studentId);
+                            deleteDepCmd.ExecuteNonQuery();
+                        }
+
+                        // 2. Delete Student
+                        using var deleteStudentCmd = new SqliteCommand("DELETE FROM Student WHERE student_id = @student_id", connection, transaction);
+                        deleteStudentCmd.Parameters.AddWithValue("@student_id", studentId);
+                        deleteStudentCmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+                        Console.WriteLine("\nA diák és az összes hozzá tartozó adat sikeresen törölve lett!");
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        Console.WriteLine($"\nHiba történt a törlés során: {ex.Message}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\nTörlés megszakítva.");
+                }
+            }
+
+            Console.WriteLine("Nyomjon meg egy gombot a visszatéréshez...");
+            Console.ReadKey();
         }
         public void OrakListaFeltoltes()
         {
