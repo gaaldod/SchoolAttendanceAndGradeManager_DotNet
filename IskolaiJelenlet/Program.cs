@@ -49,6 +49,7 @@ namespace IskolaiJelenlet
             var menu = 0;
             do
             {
+                Console.Clear();
                 for(int i = 0; i < menuPontok.Count; i++)
                 {
                     Console.WriteLine(i+": "+ menuPontok[i]);

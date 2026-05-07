@@ -29,7 +29,7 @@ namespace IskolaiJelenlet.Services
         public void CreateExcelTemplate()
         {
             //ask for the target directory. if left empty, or not a valid path, use C:\Temp\ as default
-            Console.WriteLine("Enter target directory for Excel template (default: C:\\Temp\\):");
+            Console.WriteLine("\nEnter target directory for Excel template (default: C:\\Temp\\):");
             
             #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             string targetDirectory = Console.ReadLine();
@@ -87,16 +87,13 @@ namespace IskolaiJelenlet.Services
             studentSheet.Cell(1, 3).Value = "email";
             studentSheet.Cell(1, 4).Value = "enrollment_date";
 
-            // --- ADD THIS HELPER METHOD ---
+            // we format the date columns with a forced date format, this way there won't be sql import errors from this
             void FormatAsDateColumn(Excel.IXLWorksheet sheet, int colNumber)
             {
                 var col = sheet.Column(colNumber);
                 col.Style.DateFormat.Format = "yyyy-mm-dd";
                 
-                // Add strict data validation from row 2 downwards
-                var dateRange = sheet.Range(2, colNumber, 1048576, colNumber);
-                
-                // Fix for the Obsolete warning: Use CreateDataValidation()
+                var dateRange = sheet.Range(2, colNumber, 100000, colNumber);
                 var validation = dateRange.CreateDataValidation();
                 validation.AllowedValues = Excel.XLAllowedValues.Date;
                 validation.ShowErrorMessage = true;
@@ -104,11 +101,39 @@ namespace IskolaiJelenlet.Services
                 validation.ErrorMessage = "Please enter a valid date (e.g., yyyy-mm-dd).";
             }
 
-            // Apply it ONLY to the 4 specific date columns:
-            FormatAsDateColumn(gradeSheet, 4);   // grade_date (Column 4)
-            FormatAsDateColumn(lessonSheet, 3);  // lesson_date (Column 3)
-            FormatAsDateColumn(noteSheet, 4);    // created_at (Column 4)
-            FormatAsDateColumn(studentSheet, 4); // enrollment_date (Column 4)
+            // --- ADD THIS NEW HELPER METHOD FOR EMPTY ROWS ---
+            void AddEmptyRowWarning(Excel.IXLWorksheet sheet)
+            {
+                // Apply strictly to Column 1 (from Row 3 downwards) to avoid overlapping with Date columns
+                var range = sheet.Range(3, 1, 1048576, 1);
+                
+                var validation = range.CreateDataValidation();
+                validation.AllowedValues = Excel.XLAllowedValues.Custom;
+                
+                // Set the custom formula to evaluate the row above's ID column
+                validation.Value = "=NOT(ISBLANK($A2))";
+                
+                // THE FIX: Force Excel to evaluate the rule even when the user leaves the cell blank
+                validation.IgnoreBlanks = false;
+                
+                validation.ShowErrorMessage = true;
+                validation.ErrorTitle = "Empty Row Detected";
+                validation.ErrorMessage = "You cannot enter data here if the row directly above it is empty. Please fill rows without skipping!";
+            }
+
+            // Apply the date columns:
+            FormatAsDateColumn(gradeSheet, 4);   // grade_date 
+            FormatAsDateColumn(lessonSheet, 3);  // lesson_date 
+            FormatAsDateColumn(noteSheet, 4);    // created_at 
+            FormatAsDateColumn(studentSheet, 4); // enrollment_date 
+
+            // Apply the empty row restrictions (No need for column count anymore, strictly Column 1):
+            AddEmptyRowWarning(attendanceSheet);
+            AddEmptyRowWarning(courseSheet);
+            AddEmptyRowWarning(gradeSheet);
+            AddEmptyRowWarning(lessonSheet);
+            AddEmptyRowWarning(noteSheet);
+            AddEmptyRowWarning(studentSheet);
 
             // Save the template
             workbook.SaveAs(targetDirectory);
