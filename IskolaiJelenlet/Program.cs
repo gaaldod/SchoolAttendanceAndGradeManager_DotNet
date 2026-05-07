@@ -16,8 +16,8 @@ namespace IskolaiJelenlet
             Tanar tanar;
             menuPontok.Add("Kilépés");
             menuPontok.Add("Óra indítás");
-            menuPontok.Add("Diákok kezelése");
-            menuPontok.Add("Jegy kezelő");
+            menuPontok.Add("Diák adatainak módosítása/Törlése");
+            menuPontok.Add("Jegy módosítása/törlése");
             menuPontok.Add("Jelenlét kezelő");
             menuPontok.Add("Jegyzet hozzáadása");
             menuPontok.Add("Excel import/export");
